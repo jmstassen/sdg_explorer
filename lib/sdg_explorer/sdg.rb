@@ -8,6 +8,7 @@ class SdgExplorer::Sdg
   end
   
   def self.all
+    SdgExplorer::Scraper.scrape_sdgs if @@all.empty?
     @@all
   end
   

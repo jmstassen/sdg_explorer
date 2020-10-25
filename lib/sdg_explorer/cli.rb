@@ -12,15 +12,13 @@ class SdgExplorer::CLI
   end
 
   def get_sdgs
-    SdgExplorer::Sdg.new("poverty")
-    SdgExplorer::Sdg.new("warfare")
     @sdgs = SdgExplorer::Sdg.all
-    binding.pry
   end
 
   def list_sdgs
     @sdgs.each_with_index do |sdg, index|
      puts "#{index + 1}. #{sdg.name}"
+     puts ""
    end
   end
   
