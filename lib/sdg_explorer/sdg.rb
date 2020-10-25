@@ -1,9 +1,11 @@
 class SdgExplorer::Sdg
   @@all = []
-  attr_accessor :name, :reports
+  attr_accessor :name, :reports, :text, :url
   
-  def initialize(name)
+  def initialize(name, text, url)
     @name = name
+    @text = text
+    @url = "https://sdgs.un.org" + url
     @reports = []
     save
   end

@@ -23,6 +23,7 @@ class SdgExplorer::CLI
   
   def get_user_sdg
     puts ""
+    binding.pry
     puts "Which SDG would you like to explore? Enter a number."
     chosen_sdg = gets.strip.to_i
     show_reports_for(chosen_sdg) if valid_sdg(chosen_sdg, @sdgs)

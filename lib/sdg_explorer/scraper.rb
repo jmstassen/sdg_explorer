@@ -5,7 +5,9 @@ class SdgExplorer::Scraper
     sdgs = doc.css(".card")
     sdgs.each do |s|
       name = s.css(".goal-title").text
-      SdgExplorer::Sdg.new(name) if name!=""
+      text = s.css(".goal-text").text.strip
+      url = s.css("a").attr("href")
+      SdgExplorer::Sdg.new(name, text, url) if name!=""
     end
   end
   
