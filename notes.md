@@ -13,4 +13,9 @@ Classes
 - CLI: responsibility to interact with user
 - Scraper: responsibility to get data
 
+To Do
+- Get real names of SDGs
+- allow use to select 2nd SDG
+
+
 

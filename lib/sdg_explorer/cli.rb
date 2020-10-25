@@ -12,13 +12,15 @@ class SdgExplorer::CLI
   end
 
   def get_sdgs
-    # to be scraped instead
-    @sdg_names = ["test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10", "test11", "test12", "test13", "test14", "test15", "test16", "test17"]
+    SdgExplorer::Sdg.new("poverty")
+    SdgExplorer::Sdg.new("warfare")
+    @sdgs = SdgExplorer::Sdg.all
+    binding.pry
   end
 
   def list_sdgs
-    @sdg_names.each_with_index do |sdg_name, index|
-     puts "#{index + 1}. #{sdg_name}"
+    @sdgs.each_with_index do |sdg, index|
+     puts "#{index + 1}. #{sdg.name}"
    end
   end
   
@@ -26,7 +28,7 @@ class SdgExplorer::CLI
     puts ""
     puts "Which SDG would you like to explore? Enter a number."
     chosen_sdg = gets.strip.to_i
-    show_reports_for(chosen_sdg) if valid_sdg(chosen_sdg, @sdg_names)
+    show_reports_for(chosen_sdg) if valid_sdg(chosen_sdg, @sdgs)
   end
   
   def valid_sdg(input, data)
@@ -34,8 +36,7 @@ class SdgExplorer::CLI
   end  
     
   def show_reports_for(chosen_sdg)
-    sdg_name = @sdg_names[chosen_sdg - 1]
-    puts "Here are the available annual progress reports for SDG-#{chosen_sdg}. #{sdg_name}"
-    binding.pry
+    sdg_name = @sdgs[chosen_sdg - 1].name
+    puts "Here are the available annual progress reports for SDG-#{chosen_sdg} (#{sdg_name})"
   end
 end

@@ -1,5 +1,6 @@
 require_relative "./sdg_explorer/version"
 require_relative "./sdg_explorer/cli"
+require_relative "./sdg_explorer/sdg"
 
 require "pry"
 
