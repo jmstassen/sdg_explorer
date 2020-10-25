@@ -2,9 +2,10 @@ class SdgExplorer::Report
   @@all = []
   attr_accessor :year, :sdg, :content
   
-  def initialize(year, sdg)
+  def initialize(year, sdg, content)
     @year = year
     @sdg = sdg
+    @content = content
     add_to_sdg
     save
   end

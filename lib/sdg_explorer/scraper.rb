@@ -12,7 +12,12 @@ class SdgExplorer::Scraper
   end
   
   def self.scrape_reports(sdg)
-    SdgExplorer::Report.new("2020", sdg)
-    SdgExplorer::Report.new("2019", sdg)
+    doc = Nokogiri::HTML(open("#{sdg.url}"))
+    reports = doc.css("section.text-formatted")
+    reports.each do |r|
+      year = r.attr("class").delete("^0-9")
+      content = r.text.strip
+      SdgExplorer::Report.new(year, sdg, content)
+    end
   end
 end
