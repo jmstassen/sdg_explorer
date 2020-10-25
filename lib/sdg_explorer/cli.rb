@@ -25,15 +25,17 @@ class SdgExplorer::CLI
   def get_user_sdg
     puts ""
     puts "Which SDG would you like to explore? Enter a number."
-    chosen_sdg = gets.strip
-    binding.pry
-    # if valid_sdg(chosen_sdg.to_i, @sdg_names)
-    # end
+    chosen_sdg = gets.strip.to_i
+    show_reports_for(chosen_sdg) if valid_sdg(chosen_sdg, @sdg_names)
   end
   
   def valid_sdg(input, data)
-    input <= data.length && input > 0
+    input.to_i <= data.length && input.to_i > 0
   end  
     
-  
+  def show_reports_for(chosen_sdg)
+    sdg_name = @sdg_names[chosen_sdg - 1]
+    puts "Here are the available annual progress reports for SDG-#{chosen_sdg}. #{sdg_name}"
+    binding.pry
+  end
 end
