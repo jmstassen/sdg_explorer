@@ -9,4 +9,8 @@ class SdgExplorer::Scraper
     end
   end
   
+  def self.scrape_reports(sdg)
+    SdgExplorer::Report.new("2020", "test report 1")
+    SdgExplorer::Report.new("2019", "test report 2")
+  end
 end
