@@ -18,7 +18,7 @@ class SdgExplorer::CLI
   def list_sdgs
     @sdgs.each_with_index do |sdg, index|
      puts "#{index + 1}. #{sdg.name}"
-     puts ""
+
    end
   end
   
@@ -34,7 +34,7 @@ class SdgExplorer::CLI
   end  
     
   def show_reports_for(chosen_sdg)
-    sdg_name = @sdgs[chosen_sdg - 1].name
-    puts "Here are the available annual progress reports for SDG-#{chosen_sdg} (#{sdg_name})"
+    sdg = @sdgs[chosen_sdg - 1]
+    puts "Here are the available annual progress reports for #{sdg.name}"
   end
 end
