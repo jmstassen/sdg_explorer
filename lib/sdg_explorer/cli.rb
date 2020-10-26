@@ -38,26 +38,30 @@ class SdgExplorer::CLI
   end  
     
   def list_reports_for(chosen_sdg)
-    sdg = @sdgs[chosen_sdg - 1]
-    sdg.get_reports
+    @sdg = @sdgs[chosen_sdg - 1]
+    @sdg.get_reports
     puts ""
-    puts "Here are the available annual reports for #{sdg.name}:".colorize(:blue)
-    sdg.reports.each_with_index do |r, index|
+    puts "Here are the available annual reports for #{@sdg.name}:".colorize(:blue)
+    @sdg.reports.each_with_index do |r, index|
       puts "#{index +1}".colorize(:red) + ". #{r.year}"
     end
+    get_user_report
+  end
+  
+  def get_user_report
     puts ""
     puts "Which report would you like to read? Enter single digit.".colorize(:red)
     chosen_report = gets.strip.to_i
-    if valid_input(chosen_report, sdg.reports)
-      display_report_for(chosen_report, sdg)
+    if valid_input(chosen_report, @sdg.reports)
+      display_report_for(chosen_report, @sdg)
     else
-      list_reports_for(@chosen_sdg)
+      get_user_report
     end
   end
   
   def display_report_for(chosen_report, sdg)
     report = sdg.reports[chosen_report - 1]
-    puts "#{sdg.name}: #{sdg.text}".colorize(:blue)
+    puts "#{@sdg.name}: #{@sdg.text}".colorize(:blue)
     puts "#{report.year} Progress Report".colorize(:red)
     puts report.content
     puts ""
@@ -74,6 +78,4 @@ class SdgExplorer::CLI
     else
     end
   end
-    
-  
 end
