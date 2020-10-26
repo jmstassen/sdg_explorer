@@ -7,6 +7,7 @@ require_relative "./sdg_explorer/report"
 require "pry"
 require "nokogiri"
 require "open-uri"
+require "colorize"
 
 module SdgExplorer
   class Error < StandardError; end
