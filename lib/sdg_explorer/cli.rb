@@ -4,12 +4,6 @@ class SdgExplorer::CLI
     puts "Welcome to SDG Explorer. These are the Sustainable Development Goals:".colorize(:blue)
     get_sdgs
     list_sdgs
-    get_user_sdg
-    
-    # get_progress_reports_for(sdg)
-    # print_available_progress_reports
-    # get_user_progress_report
-    # print_progress_report_for(sdg, year)
   end
 
   def get_sdgs
@@ -21,6 +15,7 @@ class SdgExplorer::CLI
      puts "#{index + 1}".colorize(:red)  + ". #{sdg.text}"
      puts ""
    end
+   get_user_sdg
   end
   
   def get_user_sdg
@@ -64,9 +59,13 @@ class SdgExplorer::CLI
     puts "#{@sdg.name}: #{@sdg.text}".colorize(:blue)
     puts "#{report.year} Progress Report".colorize(:red)
     puts report.content
+    get_user_choice
+  end
+  
+  def get_user_choice
     puts ""
     puts "What would you like to do? Enter a number.".colorize(:red)
-    puts "1".colorize(:red) + ". See another year for #{sdg.name}"
+    puts "1".colorize(:red) + ". See another year for #{@sdg.name}"
     puts "2".colorize(:red) + ". Choose another SDG"
     puts "3".colorize(:red) + ". Exit program"
     user_choice = gets.strip.to_i
@@ -74,8 +73,10 @@ class SdgExplorer::CLI
       list_reports_for(@chosen_sdg)
     elsif user_choice == 2
       list_sdgs
-      get_user_sdg
+    elsif user_choice == 3
+      puts "Thank you. Have a nice day.".colorize(:blue)
     else
+      get_user_choice
     end
   end
 end
