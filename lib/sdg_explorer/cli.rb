@@ -56,8 +56,11 @@ class SdgExplorer::CLI
   
   def display_report_for(chosen_report, sdg)
     report = sdg.reports[chosen_report - 1]
-    puts "#{@sdg.name}: #{@sdg.text}".colorize(:blue)
+    puts ""
+    puts "#{@sdg.name}:" + " #{@sdg.text}".colorize(:blue)
+    puts ""
     puts "#{report.year} Progress Report".colorize(:red)
+    puts "--------------------".colorize(:red)
     puts report.content
     get_user_choice
   end
