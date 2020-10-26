@@ -1,6 +1,6 @@
 class SdgExplorer::Sdg
   @@all = []
-  attr_accessor :name, :reports, :text, :url
+  attr_accessor :name, :reports, :text, :url, :short_title
   
   def initialize(name, text, url)
     @name = name
